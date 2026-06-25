@@ -5,7 +5,9 @@ public class BaseEnemy : MonoBehaviour
 {
     [SerializeField] protected float EnemySpeed;
     [SerializeField] protected float EnemyScore;
+    [SerializeField] private GameObject deathEffectPrefab;
     private bool DoSelfDestroy;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,15 +25,16 @@ public class BaseEnemy : MonoBehaviour
     }
     public void Die()
     {
+        if (deathEffectPrefab != null)
+            Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerMove player = collision.gameObject.GetComponent<PlayerMove>();
+        PlayerHealth player = collision.gameObject.GetComponent<PlayerHealth>();
         if (player != null)
         {
-            Destroy(player.gameObject);
-            GameUI.instance.Pause();
+            player.TakeDamage();
             Die();
         }
     }

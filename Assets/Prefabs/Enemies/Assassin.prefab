@@ -178,5 +178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2b6a6f622d56ac46bd60f251540230f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assassin
-  EnemySpeed: 5
+  EnemySpeed: 5.5
   EnemyScore: 5
+  deathEffectPrefab: {fileID: 291008686751335879, guid: a29e533c513ef42ea875dcc64066970b, type: 3}
